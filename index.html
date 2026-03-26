@@ -106,6 +106,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>
 function acceptConsent() {
   window.dataLayer = window.dataLayer || [];
+
+  // Step 1: Update consent
   dataLayer.push({
     event: "consent_update",
     analytics_storage: "granted",
@@ -113,6 +115,13 @@ function acceptConsent() {
     ad_user_data: "granted",
     ad_personalization: "granted"
   });
+
+  // Step 2: Fire pageview AFTER delay
+  setTimeout(function() {
+    dataLayer.push({
+      event: "pageview_after_consent"
+    });
+  }, 500);
 
   document.getElementById("banner").style.display = "none";
 }
