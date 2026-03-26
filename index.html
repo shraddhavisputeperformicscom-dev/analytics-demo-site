@@ -94,16 +94,19 @@
   </div>
 
   <script>
-    function acceptConsent() {
-      gtag('consent', 'update', {
-        analytics_storage: 'granted',
-        ad_storage: 'granted',
-        ad_user_data: 'granted',
-        ad_personalization: 'granted'
-      });
-      document.getElementById("banner").style.display = "none";
-    }
-  </script>
+function acceptConsent() {
+  window.dataLayer = window.dataLayer || [];
+  dataLayer.push({
+    event: "consent_update",
+    analytics_storage: "granted",
+    ad_storage: "granted",
+    ad_user_data: "granted",
+    ad_personalization: "granted"
+  });
+
+  document.getElementById("banner").style.display = "none";
+}
+</script>
 
 </body>
 </html>
